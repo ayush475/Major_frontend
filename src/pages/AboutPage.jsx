@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomePage = () => {
+const AboutPage = () => {
     return (
        <>
        <section class="bg-white dark:bg-gray-900">
@@ -82,4 +82,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default AboutPage;

@@ -8,7 +8,7 @@ function App() {
   return (
   <>
       <NavigationBar/>
-      <ApplicationHeader/>
+      {/* <ApplicationHeader/> */}
       <Routes />
   </>  
   );
