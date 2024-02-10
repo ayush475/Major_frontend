@@ -31,9 +31,9 @@ const NavigationBar = () => {
               <button
                 onClick={() => setOpen(!open)}
                 id="navbarToggler"
-                className={` ${
-                  open && "navbarTogglerActive"
-                } absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden`}
+                className={`navbarTogglerActive ${
+                  open?"navbarTogglerActive rotate-90":""
+                } absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden transition-transform duration-500 ease-in-out`}
               >
                 <PiHamburgerDuotone  size={40}/>
 
@@ -41,7 +41,7 @@ const NavigationBar = () => {
               <nav
                 // :className="!navbarOpen && 'hidden' "
                 id="navbarCollapse"
-                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow dark:bg-black lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
+                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow dark:bg-white lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
                   !open && "hidden"
                 } `}
               >
@@ -56,14 +56,14 @@ const NavigationBar = () => {
             <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
               <a
                 href="/signin"
-                className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-black"
+                className="px-7 py-3 text-base font-medium text-dark  dark:text-black"
               >
                 Sign in
               </a>
 
               <a
                 href="/signup"
-                className="rounded-md bg-blue-400 px-7 py-3 text-base font-medium text-black hover:bg-primary/90"
+                className="rounded-md bg-blue-400 px-7 py-3 text-base font-medium text-black "
               >
                 Sign Up
               </a>
@@ -83,7 +83,7 @@ const ListItem = ({ children, NavLink }) => {
       <li>
         <a
           href={NavLink}
-          className="flex py-2 text-base font-medium text-body-color hover:text-dark dark:text-black dark:hover:text-white lg:ml-12 lg:inline-flex"
+          className="flex py-2 text-base font-medium text-body-color hover:text-dark dark:text-black dark:hover:text-gray-900 lg:ml-12 lg:inline-flex"
         >
           {children}
         </a>
