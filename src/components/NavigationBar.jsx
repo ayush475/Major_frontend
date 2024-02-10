@@ -55,14 +55,14 @@ const NavigationBar = () => {
             </div>
             <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
               <a
-                href="/#"
+                href="/signin"
                 className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-black"
               >
                 Sign in
               </a>
 
               <a
-                href="/#"
+                href="/signup"
                 className="rounded-md bg-blue-400 px-7 py-3 text-base font-medium text-black hover:bg-primary/90"
               >
                 Sign Up
