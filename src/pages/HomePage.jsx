@@ -5,7 +5,7 @@ import { FaLeaf, FaUtensils, FaChartLine } from 'react-icons/fa'; // Import icon
 const HomePage = () => {
     return (
         <>
-            <header className="bg-gray-900 text-white py-24">
+            <header className="bg-gray-900 text-white py-24 z-100">
                 <div className="container mx-auto text-center">
                     <h1 className="text-4xl md:text-6xl font-bold mb-4">FOOD GEN AI</h1>
                     <p className="text-lg md:text-xl mb-8">Discover the Future of Food Generation</p>
