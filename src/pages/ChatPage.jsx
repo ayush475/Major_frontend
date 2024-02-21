@@ -135,6 +135,7 @@ const ChatPage = () => {
   }, []);
 
   const generateRecipeFromGpt2 = async (formatedInputTitle) => {
+    setInputText("")
     axios
       .post("/generate_recipe", {
         prompt: formatedInputTitle,
