@@ -125,7 +125,15 @@ const ChatPage = () => {
     "umm",
     "la vandina aba",
   ];
-  2;
+  
+  const placeholderTexts = {
+    title: "Input title of dish",
+    ingredients: "Input Ingredients separated by commas",
+    dishImage: "Upload dish image",
+    ingredientsImage: "Upload ingredients image",
+  };
+  
+  const placeholder = placeholderTexts[selectedInputType] || "Select an input type";
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
@@ -325,19 +333,18 @@ const ChatPage = () => {
           <div ref={messagesEndRef} />
         </div>
         {/* Input field and send button */}
-        <div className="border-t-2 border-gray-200 px-4 pt-4 mb-20 sm:mb-0">
-          <div className="relative flex">
-            {/* Camera button */}
-            <button
-              type="button"
-              disabled={
-                selectedInputType === "title" ||
-                selectedInputType === "ingredients"
-              }
-              className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none"
-              onClick={() => document.getElementById("fileInput").click()}
-            >
-              <svg
+        <div className="border-t-2 border-gray-200 px-4 pt-4 mb-10 sm:mb-0">
+  <div className="relative flex flex-wrap items-center">
+    {/* Camera button */}
+    {(selectedInputType === 'dishImage' || selectedInputType === 'ingredientsImage') && (
+
+    <button
+      type="button"
+      disabled={selectedInputType === "title" || selectedInputType === "ingredients"}
+      className="inline-flex items-center justify-center rounded-lg px-4 py-3 mb-2 sm:mb-0 mr-2 sm:mr-4 bg-gray-100 text-gray-500 hover:bg-gray-200 focus:outline-none"
+      onClick={() => document.getElementById("fileInput").click()}
+    >
+             <svg
                 fill="#000000"
                 height="20px"
                 width="30px"
@@ -359,70 +366,70 @@ const ChatPage = () => {
                     />
                   </g>
                 </g>
-              </svg>{" "}
-            </button>
+              </svg>    </button>
+    )}
 
-            <select value={selectedInputType} onChange={handleInputTypeChange}>
-              <option value="title">Title</option>
-              <option value="ingredients">Ingredients</option>
-              <option value="dishImage">Dish Image</option>
-              <option value="ingredientsImage">Ingredients Image</option>
-            </select>
-            <input
-              type="file"
-              id="fileInput"
-              style={{ display: "none" }}
-              onChange={handleFileChange}
-              multiple
-            />
-            {/* preview Images */}
-            {image && (
-              <div
-                style={{
-                  maxWidth: "40px",
-                  maxHeight: "40px",
-                  overflow: "hidden",
-                }}
-              >
-                <img
-                  src={image}
-                  alt="Preview"
-                  className="w-auto h-auto max-w-full max-h-full object-cover rounded-lg "
-                />
-              </div>
-            )}
+    {/* Select input type */}
+    <select 
+      value={selectedInputType} 
+      onChange={handleInputTypeChange}
+      className="w-1/2 sm:w-auto px-4 py-2 mb-2 sm:mb-0 text-sm text-gray-700 border rounded-lg focus:outline-none focus:shadow-outline transition duration-200 ease-in-out bg-white hover:border-gray-500"
+    >
+      <option value="title">Title</option>
+      <option value="ingredients">Ingredients</option>
+      <option value="dishImage">Dish Image</option>
+      <option value="ingredientsImage">Ingredients Image</option>
+    </select>
 
-            <input
-              type="text"
-              placeholder={
-                selectedInputType === "title"
-                  ? "Input title of dish"
-                  : `Input Ingredients seperated by commas`
-              }
-              value={inputText}
-              onChange={handleInputChange}
-              className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3"
-            />
-            <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
-              <button
-                type="button"
-                onClick={handleSendMessage}
-                disabled={!(inputText == "" || !selectedImageData)}
-                className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
-              >
-                <span className="font-bold">Send</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-6 w-6 ml-2 transform rotate-90"
-                >
-                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
+    {/* Image preview */}
+    {image && (
+      <div className="w-10 h-10 overflow-hidden mr-2">
+        <img
+          src={image}
+          alt="Preview"
+          className="w-full h-full object-cover rounded-lg"
+        />
+      </div>
+    )}
+
+    {/* Input field */}
+    <input
+      type="text"
+      placeholder={placeholder}
+      value={inputText}
+      onChange={handleInputChange}
+      className="w-full sm:w-1/2 focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3 mb-2 sm:mb-0"
+    />
+
+    {/* Send button */}
+    <button
+      type="button"
+      onClick={handleSendMessage}
+      disabled={!(inputText === "" || !selectedImageData)}
+      className="inline-flex items-center justify-center rounded-lg px-4 py-3 bg-blue-500 text-white hover:bg-blue-400 focus:outline-none ml-2"
+    >
+      <span className="font-bold text-xs sm:text-base">Send</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        className="h-6 w-6 ml-2 transform rotate-90"
+      >
+        {/* SVG path here */}
+      </svg>
+    </button>
+  </div>
+
+  {/* File input */}
+  <input
+    type="file"
+    id="fileInput"
+    style={{ display: "none" }}
+    onChange={handleFileChange}
+    multiple
+  />
+</div>
+
       </div>
     </div>
   );
