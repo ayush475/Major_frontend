@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "../utils/axios";
 import formatRecipe from "./chatFormat";
+import Spinner from "../components/Spinner";
 // import axios from "axios";
 let newMessages = [];
 const ChatPage = () => {
@@ -12,6 +13,7 @@ const ChatPage = () => {
     //selectedinput type
     const [selectedInputType, setSelectedInputType] = useState("title");
     const [selectedImageData, setSelectedImageData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleInputTypeChange = (e) => {
         console.log(e.target.value, "input type this is ");
@@ -19,8 +21,8 @@ const ChatPage = () => {
         setSelectedInputType(e.target.value);
     };
 
-    function handleKeyDown(event){
-        if(event.key === 'Enter'){
+    function handleKeyDown(event) {
+        if (event.key === 'Enter') {
             handleSendMessage();
         }
     }
@@ -153,6 +155,7 @@ const ChatPage = () => {
 
     const generateRecipeFromGpt2 = async (formatedInputTitle) => {
         // setInputText("")
+        setIsLoading(true);
         axios
             .post("/generate_recipe", {
                 prompt: formatedInputTitle,
@@ -259,6 +262,7 @@ const ChatPage = () => {
             }
 
         }
+        setIsLoading(false);
         setInputText(" ");
 
     };
@@ -325,6 +329,7 @@ const ChatPage = () => {
                                 >
                                     {message.type === "text" && (
                                         <div>
+
                                             <span
                                                 className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600"
                                                 dangerouslySetInnerHTML={{ __html: message.content }}
