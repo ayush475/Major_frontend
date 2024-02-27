@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "../utils/axios";
+import formatRecipe from "./chatFormat";
 // import axios from "axios";
 let newMessages = [];
 const ChatPage = () => {
@@ -118,12 +119,9 @@ const ChatPage = () => {
 
   //dummy replies
   const defaultReplies = [
-    "hajur",
-    "pet dhukyo , aaiya dhukyo",
-    "ja",
-    "hmm ",
-    "umm",
-    "la vandina aba",
+    "Generating your recipe. Please wait",
+    "Analyzing your image. Please wait",
+
   ];
   
   const placeholderTexts = {
@@ -148,15 +146,19 @@ const ChatPage = () => {
       .post("/generate_recipe", {
         prompt: formatedInputTitle,
       })
-      .then((respose) => {
+      .then((response) => {
         console.log(
-          respose.data.generated_text,
+          response.data.generated_text,
           "this is generating the output from title"
         );
+        const generatedText = response.data.generated_text;
+        const formattedContent = formatRecipe(generatedText);
+
+
         // const newMessages = [...messages];
         newMessages.push({
           type: "text",
-          content: respose.data.generated_text,
+          content:formattedContent,
           sentByCurrentUser: false,
         });
         setMessages(newMessages);
