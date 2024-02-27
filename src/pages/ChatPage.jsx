@@ -177,10 +177,13 @@ const ChatPage = () => {
                 });
                 setMessages(newMessages);
                 setInputText("");
+                setIsLoading(false);
             })
             .catch((err) => {
                 console.log(err);
+                setIsLoading(false);
             });
+            // setIsLoading(false);
     };
     const handleSendMessage = async () => {
         // Check if there's any input text or image to send
@@ -262,7 +265,7 @@ const ChatPage = () => {
             }
 
         }
-        setIsLoading(false);
+        
         setInputText(" ");
 
     };
@@ -311,7 +314,8 @@ const ChatPage = () => {
                     id="messages"
                     className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
                 >
-                    {messages.map((message, index) => (
+                   {isLoading && <Spinner/>}
+                    {!isLoading && messages.map((message, index) => (
                         <div
                             key={index}
                             className={`chat-message ${message.sentByCurrentUser ? "justify-end" : "justify-start"
