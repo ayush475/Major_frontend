@@ -315,7 +315,7 @@ const ChatPage = () => {
                     className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
                 >
                    {isLoading && <Spinner/>}
-                    {!isLoading && messages.map((message, index) => (
+                    { messages.map((message, index) => (
                         <div
                             key={index}
                             className={`chat-message ${message.sentByCurrentUser ? "justify-end" : "justify-start"

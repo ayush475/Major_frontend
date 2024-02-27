@@ -3,14 +3,14 @@
     /* CSS properties for flex */
 }
 .parent-div {
-    position: relative; /* Ensure the parent div serves as the positioning context */
+    position: absolute; /* Ensure the parent div serves as the positioning context */
     width: 100%; /* Adjust the width as needed */
     height: 100%; /* Adjust the height as needed */
     overflow: hidden; /* Ensure the child elements don't overflow beyond the parent */
 }
 
 .spinner { 
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
     width: 45px;
@@ -55,7 +55,7 @@
 }
 
 #container {
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
