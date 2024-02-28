@@ -214,14 +214,21 @@ const ChatPage = () => {
             }
             const keywordResponse = checkForKeywords(inputText);
             if (keywordResponse) {
-                newMessages.push({
-                    type: "text",
-                    content: keywordResponse,
-                    sentByCurrentUser: false,
-                });
+                setIsLoading(true);
+                setTimeout(() => {
+                    newMessages.push({
+                        type: "text",
+                        content: keywordResponse,
+                        sentByCurrentUser: false,
+                    });
+                    setIsLoading(false);
+                   
+                }, 5000); 
                 setMessages(newMessages);
-            setInputText("");
-            return;
+                
+                setInputText("");
+
+                return;
             }
             // If there's an image, add it as an image message
             if (image) {
