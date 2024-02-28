@@ -42,7 +42,7 @@ const ChatPage = () => {
 
     const formatInputForRecipeGeneraiton = () => {
         if (selectedInputType === "title") {
-            return `<RECIPE_START><TITLE_START> ${inputText} <TITLE_END><INPUT_START></INPUT_START>`;
+            return `<RECIPE_START><TITLE_START> ${inputText} <TITLE_END><INPUT_START>`;
         } else if (selectedInputType === "ingredients") {
             const arrIngr = inputText.split(",");
             let formattedInput = `<INPUT_START> ${arrIngr[0]}`;

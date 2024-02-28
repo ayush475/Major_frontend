@@ -1,20 +1,41 @@
-function formatRecipe(recipeText) {
+function formatRecipe(recipe) {
+    let recipeText = "";
+
+    if((/^\n<RECIPE_START>/.test(recipe))){
+        console.log("from title");
+         recipeText= recipe.split("<INSTR_END>", 1)[0]
+
+    }else{
+        console.log("from ingredients");
+        recipeText= recipe.split("<RECIPE_END>", 1)[0]
+
+    }
+    
+    console.log(recipeText,"ddd")
     // Define patterns for different types of tags
     const tags = {
-        '<RECIPE_START>': '<strong>Recipe:</strong> <br>',
-        '<TITLE_START>': '<strong>Recipe:</strong> <br> ',
-        '<TITLE_END>': '<br><strong>Ingredients:</strong> ',
-        '<INPUT_START>': '<br>Let\'s start with: <br>',
-        '<INPUT_END>': 'now let\'s move on to: <br>',
-        '<INGR_START>': 'The ingredients are: <br>',
-        '<NEXT_INGR>': 'and furthermore <br>:',
-        '<INGR_END>': '',
-        '<INSTR_START>': '<br><strong>Instructions:</strong> ',
-        '<NEXT_INSTR>': '<br>',
-        '<RECIPE_END>': '<br><strong>Ingredients:</strong> <br>',
-        '<INSTR_END>': '<br><strong>Instructions:</strong> <br> ',
-        '</INPUT_START>': '<br>&nbsp;&nbsp;&nbsp;&nbsp;',
-        '<NEXT_INPUT>': '<br>&nbsp;&nbsp;&nbsp;&nbsp;',
+        // '<RECIPE_START>': '<strong>Recipe:</strong> <br>',
+        '<RECIPE_START>': '\n',
+        '<TITLE_START>': '<strong>Title:</strong> <br> ',
+        // '<TITLE_END>': '<br><strong>Ingredients:</strong> ',
+        '<TITLE_END>': '<br><br>',
+
+        '<INPUT_START>': '<br><strong>Ingredients:</strong> ',
+        // '<INPUT_START>': '<br>Ingredients:<br>',
+        '<NEXT_INPUT>': ',',
+        
+        '<INPUT_END>': '<br>',
+        '<INGR_START>': '<strong>The Quantity of ingredients</strong><br>',
+        '<NEXT_INGR>': '<br>',
+        '<INGR_END>': '<br>',
+        '<INSTR_START>': '<br><strong>Instructions are:</strong> <br> <ul style="list-style-type: disc;"> <li >',
+        '<NEXT_INSTR>': '</li><li>',
+        // '<RECIPE_END>': '<br><strong>Ingredients:</strong> <br>',
+        '<INSTR_END>': '</li></ul><br> ',
+        // '</INPUT_START>': '<br>&nbsp;&nbsp;&nbsp;&nbsp;',
+        // '<NEXT_INPUT>': '<br>&nbsp;&nbsp;&nbsp;&nbsp;',
+        // '<RECIPE_END>': '',
+
     };
 
     // Replace the tags
@@ -27,11 +48,12 @@ function formatRecipe(recipeText) {
     const [ingredientsPart, instructionsPart] = recipeText.split('</INSTR_START>').map(part => part.trim());
 
     // Format the ingredients and instructions
-    const ingredients = `<strong>Ingredients:</strong> ${ingredientsPart}`;
+    const ingredients = `<strong></strong> ${ingredientsPart}`;
     const instructions = instructionsPart;
 
     // Combine the formatted ingredients and instructions
-    const formattedRecipe = `${ingredients}<br>${instructions}`;
+    const formattedRecipe = `${ingredients}<br>`;
+    console.log(formattedRecipe,"formattedRecipe")
 
     return formattedRecipe;
 }
