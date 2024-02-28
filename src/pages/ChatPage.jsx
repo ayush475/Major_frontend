@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "../utils/axios";
 import formatRecipe from "./chatFormat";
 import Spinner from "../components/Spinner";
+import keywordResponses from "./keywordResponses";
 // import axios from "axios";
 let newMessages = [];
 const ChatPage = () => {
@@ -26,6 +27,18 @@ const ChatPage = () => {
             handleSendMessage();
         }
     }
+    const checkForKeywords = (input) => {
+        const inputLower = input.toLowerCase();
+        
+        for (let i = 0; i < keywordResponses.length; i++) {
+            if (inputLower.includes(keywordResponses[i].keyword)) {
+                return keywordResponses[i].response;
+            }
+        }
+        
+        return null;
+    };
+
 
     const formatInputForRecipeGeneraiton = () => {
         if (selectedInputType === "title") {
@@ -199,7 +212,17 @@ const ChatPage = () => {
                     sentByCurrentUser: true,
                 });
             }
-
+            const keywordResponse = checkForKeywords(inputText);
+            if (keywordResponse) {
+                newMessages.push({
+                    type: "text",
+                    content: keywordResponse,
+                    sentByCurrentUser: false,
+                });
+                setMessages(newMessages);
+            setInputText("");
+            return;
+            }
             // If there's an image, add it as an image message
             if (image) {
                 newMessages.push({
