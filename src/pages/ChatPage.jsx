@@ -29,13 +29,13 @@ const ChatPage = () => {
     }
     const checkForKeywords = (input) => {
         const inputLower = input.toLowerCase();
-        
+
         for (let i = 0; i < keywordResponses.length; i++) {
             if (inputLower.includes(keywordResponses[i].keyword)) {
                 return keywordResponses[i].response;
             }
         }
-        
+
         return null;
     };
 
@@ -196,7 +196,7 @@ const ChatPage = () => {
                 console.log(err);
                 setIsLoading(false);
             });
-            // setIsLoading(false);
+        // setIsLoading(false);
     };
     const handleSendMessage = async () => {
         // Check if there's any input text or image to send
@@ -222,10 +222,10 @@ const ChatPage = () => {
                         sentByCurrentUser: false,
                     });
                     setIsLoading(false);
-                   
-                }, 5000); 
+
+                }, 5000);
                 setMessages(newMessages);
-                
+
                 setInputText("");
 
                 return;
@@ -295,7 +295,7 @@ const ChatPage = () => {
             }
 
         }
-        
+
         setInputText(" ");
 
     };
@@ -344,8 +344,8 @@ const ChatPage = () => {
                     id="messages"
                     className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
                 >
-                   {isLoading && <Spinner/>}
-                    { messages.map((message, index) => (
+                    {isLoading && <Spinner />}
+                    {messages.map((message, index) => (
                         <div
                             key={index}
                             className={`chat-message ${message.sentByCurrentUser ? "justify-end" : "justify-start"
