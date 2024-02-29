@@ -418,7 +418,7 @@ const ChatPage = () => {
                   {message.type === "text" && (
                     <div>
                       <span
-                        className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600"
+                        className="px-4 py-2  text-2xl rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600"
                         dangerouslySetInnerHTML={{ __html: message.content }}
                       />
                     </div>
