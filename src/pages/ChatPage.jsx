@@ -260,7 +260,7 @@ const ChatPage = () => {
         setTimeout(() => {
           newMessages.push({
             type: "text",
-            content: keywordResponse,
+            content: `<strong>Title:</strong><strong> ${inputText}<br><br></strong>`+keywordResponse,
             sentByCurrentUser: false,
           });
           setIsLoading(false);
