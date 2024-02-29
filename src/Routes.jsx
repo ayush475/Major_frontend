@@ -12,7 +12,7 @@ const RoutesComponent = () => {
     return (
         <Router>
             <Routes>
-                <Route exact path="/" element={<HomePage/>} />
+                <Route exact path="/" element={<ChatPage/>} />
                 <Route exact path="/about" element={<AboutPage/>} />
                 <Route exact path ="/chat" element={<ChatPage/>} />
                 <Route exact path ="/signup" element={<SignupPage/>} />

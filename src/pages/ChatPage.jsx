@@ -257,6 +257,15 @@ const ChatPage = () => {
       const keywordResponse = checkForKeywords(inputText);
       if (keywordResponse) {
         setIsLoading(true);
+        newMessages.push({
+          type: "text",
+          //   content: defaultReplies[nextReplyIndex],
+          content: "Generating your recipe. Please wait",
+          sentByCurrentUser: false,
+        });
+        setNextReplyIndex(nextReplyIndex + 1);
+        setMessages(newMessages)
+
         setTimeout(() => {
           newMessages.push({
             type: "text",
@@ -378,13 +387,13 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="w-full absolute inset-y-0 bottom-10px z-10">
+    <div className="w-full absolute inset-y-0 bottom-10px z-10 top-12 overflow-hidden">
       <div className="flex-1 p-2 sm:p-6 justify-between flex flex-col h-screen">
         {/* Header */}
         {/* Messages */}
         <div
           id="messages"
-          className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
+          className="mt-10 flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
         >
           {isLoading && <Spinner />}
           {messages.map((message, index) => (

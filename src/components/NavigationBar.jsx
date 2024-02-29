@@ -1,32 +1,33 @@
 import React, { useState } from "react";
 import { PiHamburgerDuotone } from "react-icons/pi";
+import chefLogo from '../assets/cheflogo.png'
 
 
 const NavigationBar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className={`flex w-full items-center bg-white `}>
+    <header className={`flex w-full items-center bg-white  z-50`}>
       <div className="container">
         <div className="relative -mx-4 flex items-center justify-between">
           <div className="w-60 max-w-full px-4">
-            <a href="/chat" className="block w-full py-5">
+            <a href="/chat" className="block w-full py-1">
               <img
-                src="../src/assets/logo.svg"
+                src={chefLogo}
                 alt="logo"
                 className=""
-                height={20}
-                width={20}
+                height={60}
+                width={60}
                 
               />
               <img
-                src="../src/assets/logo.svg"
+                src={chefLogo}
                 alt="logo"
                 className="hidden "
               />
             </a>
           </div>
-          <div className="flex w-full items-center justify-between px-4">
+          {/* <div className="flex w-full items-center justify-between px-4">
             <div>
               <button
                 onClick={() => setOpen(!open)}
@@ -68,6 +69,10 @@ const NavigationBar = () => {
                 Sign Up
               </a>
             </div>
+          </div> */}
+
+          <div className="w-full text-center font-bold text-2xl mr-36 text-gray-800">
+            Generate Food recipe with AI
           </div>
         </div>
       </div>
