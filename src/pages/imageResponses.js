@@ -58,6 +58,8 @@ const defaultImages = [
   "tama",
   "aalu_onion_tomato_chilli",
   "dal_onion_tomato_garlic",
-  "gundruk ko tarkari"
+  "gundruk ko tarkari",
+  "french fries",
+  "corriander tomato onion",
 ];
 export default defaultImages;
