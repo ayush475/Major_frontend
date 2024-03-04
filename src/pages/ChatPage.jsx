@@ -72,20 +72,21 @@ const ChatPage = () => {
   };
 
   const predictDishTitleFromImage = () => {
-    // check the default images
-    // if (checkDefaultDetecitonImage(image)) {
-    //   newMessages.push({
-    //     type: "text",
-    //     content: `Your dish name is ${selectedImageName}
-    //   \n
-    //   Click send to send to gerate recipe for ${selectedImageName}`,
-    //     sentByCurrentUser: false,
-    //   });
-    //   setMessages(newMessages);
-    //   setInputText(selectedImageName);
-    //   setSelectedInputType("title");
-    //   return;
-    // }
+    let checkdata =checkDefaultDetecitonImage(image);
+    setTimeout(() => {
+    if (checkdata) {
+      newMessages.push({
+        type: "text",
+        content: `Your dish name is ${selectedImageName}
+      \n
+      Click send to send to generate recipe for ${selectedImageName}`,
+        sentByCurrentUser: false,
+      });
+      setMessages(newMessages);
+      setInputText(selectedImageName);
+      setSelectedInputType("title");
+    }} ,5000);
+    
 
     const formData = new FormData();
     formData.append("image", selectedImageData);
@@ -131,6 +132,21 @@ const ChatPage = () => {
   };
 
   const predictRawIngredientsFromImage = () => {
+    let checkdata =checkDefaultDetecitonImage(image);
+    if (checkdata) {
+      setTimeout(() => {
+        newMessages.push({
+          type: "text",
+          content: `Your ingredients are  ${selectedImageName.replace(/_/g, ", ")}
+        \n
+        Click send to send to generate recipe for ${selectedImageName.replace(/_/g, ", ")}`,
+          sentByCurrentUser: false,
+        });
+        setMessages(newMessages);
+        setInputText(selectedImageName);
+        setSelectedInputType("title");
+      }, 5000); 
+    }
     const formData = new FormData();
     formData.append("image", selectedImageData);
     if (image == null) {

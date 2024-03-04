@@ -56,5 +56,8 @@ const defaultImages = [
   "tongba",
   "mohi",
   "tama",
+  "aalu_onion_tomato_chilli",
+  "dal_onion_tomato_garlic",
+  "gundruk ko tarkari"
 ];
 export default defaultImages;
