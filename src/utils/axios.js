@@ -4,7 +4,7 @@ const apiUrl = import.meta.env.VITE_APP_API_BASE_URL;
 
 console.log;
 const instance = Axios.create({
-  baseURL: "http://20.102.118.211:8000/",
+  baseURL: "https://20.102.118.211:8000/",
   //   withCredentials: true,
 //   headers: {
 //     "ngrok-skip-browser-warning": true,
