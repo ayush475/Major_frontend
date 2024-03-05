@@ -28,7 +28,7 @@ function formatRecipe(recipe) {
         '<INGR_START>': '<strong>The Quantity of ingredients</strong><br>',
         '<NEXT_INGR>': '<br>',
         '<INGR_END>': '<br>',
-        '<INSTR_START>': '<br><strong>Instructions are:</strong> <br> <ul style="list-style-type: disc;"> <li >',
+        '<INSTR_START>': '<br><strong>Instructions:</strong> <br> <ul style=""> <li >',
         '<NEXT_INSTR>': '</li><li>',
         // '<RECIPE_END>': '<br><strong>Ingredients:</strong> <br>',
         '<INSTR_END>': '</li></ul><br> ',

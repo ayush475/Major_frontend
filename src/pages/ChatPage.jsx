@@ -285,7 +285,9 @@ const ChatPage = () => {
         setTimeout(() => {
           newMessages.push({
             type: "text",
-            content: `<strong> Input:</strong><strong> ${inputText}<br><br></strong>`+keywordResponse,
+            // content: `<strong> Input:</strong><strong> ${inputText}<br><br></strong>`+keywordResponse,
+            content: `<strong> Title:</strong> <br>${keywordResponse}`,
+
             sentByCurrentUser: false,
           });
           setIsLoading(false);
