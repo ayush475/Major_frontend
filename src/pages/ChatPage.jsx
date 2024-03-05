@@ -291,7 +291,7 @@ const ChatPage = () => {
             sentByCurrentUser: false,
           });
           setIsLoading(false);
-        }, 5000);
+        }, 40000);
         setMessages(newMessages);
 
         setInputText("");
