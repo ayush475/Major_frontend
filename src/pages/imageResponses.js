@@ -1,5 +1,5 @@
 const defaultImages = [
-  "gundruk_ko_achar",
+  "gundruk ko achar",
   "gundruk",
   "Ghonghi",
   "momo",
